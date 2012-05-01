@@ -1,3 +1,5 @@
+# BUNDLE ROUTES ###
+
 UsuarioBundle:
     resource: "@UsuarioBundle/Resources/config/routing.yml"
     prefix:   /
@@ -13,6 +15,13 @@ CiudadBundle:
 OfertaBundle:
     resource: "@OfertaBundle/Resources/config/routing.yml"
     prefix:   /
+
+# APP TEMPLATE ROUTES ###
+
+pagina_estatica:
+    pattern: /sitio/{pagina}/
+    defaults: { _controller: OfertaBundle:Sitio:estatica }
+
 
 # Internal routing configuration to handle ESI
 #_internal:
