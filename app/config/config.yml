@@ -2,6 +2,9 @@ imports:
     - { resource: parameters.ini }
     - { resource: security.yml }
 
+parameters:
+    cupon.ciudad_por_defecto: 'ciudad-1'
+
 framework:
     #esi:             ~
     #translator:      { fallback: %locale% }
