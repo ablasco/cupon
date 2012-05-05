@@ -30,6 +30,10 @@ _portada:
     pattern: /
     defaults: { _controller: OfertaBundle:Default:portada }
 
+ciudad_cambiar:
+    pattern: /ciudad/cambiar-a-{ciudad}
+    defaults: { _controller: CiudadBundle:Default:cambiar }
+
 
 # Internal routing configuration to handle ESI
 #_internal:

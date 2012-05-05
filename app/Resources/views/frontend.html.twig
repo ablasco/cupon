@@ -23,6 +23,8 @@
                 <li><a href="{{ path('portada') }}">Oferta del día</a></li>
                 <li><a href="#">Ofertas recientes</a></li>
                 <li><a href="#">Mis ofertas</a></li>
+
+                <li>{% render "CiudadBundle:Default:listaCiudades" with {'ciudad': ciudadSeleccionada} %}</li>
             </ul>
         </nav>
     </header>

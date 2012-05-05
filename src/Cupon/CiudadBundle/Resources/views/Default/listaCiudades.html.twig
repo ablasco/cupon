@@ -1,0 +1,18 @@
+<select id="ciudadseleccionada">
+    {% for ciudad in ciudades %}
+        {% set ciudadUrl = url('ciudad_cambiar', {'ciudad': ciudad.slug}) %}
+        {% set isSelected = (ciudadActual == ciudad.slug)? 'selected="selected"' : '' %}
+        <option value="{{ ciudad.slug }}" data-url="{{ ciudadUrl }}" {{ isSelected }}>
+            {{ ciudad.nombre }}
+        </option>
+    {% endfor %}
+</select>
+
+<script type="text/javascript">
+    var lista = document.getElementById('ciudadseleccionada');
+
+    lista.onchange = function() {
+        var url = lista.options[lista.selectedIndex].getAttribute('data-url');
+        window.location = url;
+    }
+</script>
