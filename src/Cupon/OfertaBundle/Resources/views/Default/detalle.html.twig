@@ -1,0 +1,19 @@
+{% extends '::frontend.html.twig' %}
+
+{% block title %}Detalles de {{ oferta.nombre }}{% endblock %}
+{% block id 'oferta' %}
+
+{% block article %}
+    {% include 'OfertaBundle:Default:includes/oferta.html.twig' %}
+{% endblock %}
+
+{% block aside %}
+<aside>
+    ## FORMULARIO DE LOGIN ##
+
+    <section id="nosotros">
+        <h2>Sobre nosotros</h2>
+        <p>Lorem ipsum dolor sit amet...</p>
+    </section>
+</aside>
+{% endblock %}
