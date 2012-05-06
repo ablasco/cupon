@@ -8,12 +8,18 @@
 {% endblock %}
 
 {% block aside %}
-<aside>
-    ## FORMULARIO DE LOGIN ##
+    {{ parent() }}
 
-    <section id="nosotros">
-        <h2>Sobre nosotros</h2>
-        <p>Lorem ipsum dolor sit amet...</p>
+    <section id="relacionadas">
+        <h2>Ofertas en otras ciudades</h2>
+        <ul>
+            {% for oferta in relacionadas %}
+            {% set ofertaUrl = path('oferta', {'ciudad': oferta.ciudad.slug, 'slug': oferta.slug}) %}
+            <li>
+                {{ oferta.ciudad.nombre }}:
+                <a href="{{ ofertaUrl }}">{{ oferta.nombre }}</a>
+            </li>
+            {% endfor %}
+        </ul>
     </section>
-</aside>
 {% endblock %}

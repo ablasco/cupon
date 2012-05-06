@@ -1,6 +1,7 @@
 imports:
     - { resource: parameters.ini }
     - { resource: security.yml }
+    - { resource: services.yml }
 
 parameters:
     cupon.ciudad_por_defecto: 'ciudad-1'
