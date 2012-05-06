@@ -3,6 +3,7 @@
 {% set ciudadSeleccionada = app.request.attributes.has('ciudad')
         ? app.request.attributes.get('ciudad')
         : ciudad_por_defecto %}
+{% set ciudadUrl = path('ciudad_recientes', { 'ciudad': ciudadSeleccionada}) %}
 
 {% block stylesheets %}
     <link href="{{ asset('bundles/oferta/css/normalizar.css') }}"
@@ -21,7 +22,7 @@
         <nav>
             <ul>
                 <li><a href="{{ path('portada') }}">Oferta del día</a></li>
-                <li><a href="#">Ofertas recientes</a></li>
+                <li><a href="{{ ciudadUrl }}">Ofertas recientes</a></li>
                 <li><a href="#">Mis ofertas</a></li>
 
                 <li>{% render "CiudadBundle:Default:listaCiudades" with {'ciudad': ciudadSeleccionada} %}</li>
