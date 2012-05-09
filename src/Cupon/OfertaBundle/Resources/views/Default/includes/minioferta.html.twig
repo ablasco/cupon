@@ -1,3 +1,4 @@
+{% set expirada = oferta.fechaExpiracion | date('YmdHis') < 'now' | date('YmdHis') %}
 {% set ofertaUrl = path('oferta', { 'ciudad': oferta.ciudad.slug, 'slug': oferta.slug }) %}
 {% set tiendaUrl = path('tienda_portada', {'ciudad': oferta.ciudad.slug, 'tienda': oferta.tienda.slug}) %}
 
@@ -7,18 +8,27 @@
 
         {{ oferta.descripcion | mostrar_como_lista }}
 
+        {% if not expirada %}
         <a class="boton" href="#">Comprar</a>
+        {% endif %}
 
-        <div class="estado">
+        <div class="estado {{ expirada ? 'expirada' : '' }}">
+            {% if not expirada %}
             <!-- <div class="tiempo"> -->
             <div id="tiempo">
                 <strong>Faltan</strong>: {{ oferta.fechaExpiracion | cuenta_atras }}
             </div>
+            {% else %}
+            Finalizada el {{ oferta.fechaExpiracion | date() }}
+            <div class="tiempo">
+                <strong>Finalizada</strong> el {{ oferta.fechaExpiracion | date() }}
+            </div>
+            {% endif %}
         </div>
     </div>
 
     <div class="galeria">
-        <img alt="Fotografía de la oferta" src="{{ asset('uploads/images/' ~ oferta.foto) }}">
+        <img alt="Fotografía de la oferta" src="{{ asset(directorio_imagenes ~ oferta.foto) }}">
         <p class="precio">
             {{ oferta.precio }} &euro;
             <span>{{ descuento(oferta.precio, oferta.descuento) }}</span>
