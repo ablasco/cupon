@@ -1,4 +1,5 @@
 {% set ofertaUrl = path('oferta', { 'ciudad': oferta.ciudad.slug, 'slug': oferta.slug }) %}
+{% set tiendaUrl = path('tienda_portada', {'ciudad': oferta.ciudad.slug, 'tienda': oferta.tienda.slug}) %}
 
 <section class="oferta mini">
     <div class="descripcion">
@@ -24,7 +25,7 @@
         </p>
         <p>
             Disfruta de esta oferta en
-            <a href="#">{{ oferta.tienda.nombre}}</a>
+            <a href="{{ tiendaUrl }}">{{ oferta.tienda.nombre}}</a>
         </p>
     </div>
 </section>

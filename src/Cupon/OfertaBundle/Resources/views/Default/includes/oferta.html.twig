@@ -1,4 +1,5 @@
 {% set ofertaUrl = path('oferta', {'ciudad': oferta.ciudad.slug, 'slug': oferta.slug}) %}
+{% set tiendaUrl = path('tienda_portada', {'ciudad': oferta.ciudad.slug, 'tienda': oferta.tienda.slug}) %}
 
 <section class="descripcion">
     <h1><a href="{{ ofertaUrl }}">{{ oferta.nombre }}</a></h1>
@@ -44,7 +45,7 @@
 <section class="direccion">
     <h2>Disfruta de la oferta en</h2>
     <p>
-        <a href="#">{{ oferta.tienda.nombre }}</a>
+        <a href="{{ tiendaUrl }}">{{ oferta.tienda.nombre }}</a>
         {# Mostrar la dirección de la tienda en varias líneas #}
         {{ oferta.tienda.direccion | nl2br }}
     </p>

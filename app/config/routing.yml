@@ -17,35 +17,6 @@ OfertaBundle:
     prefix:   /
 
 
-
-# APP TEMPLATE ROUTES ###
-
-pagina_estatica:
-    pattern: /sitio/{pagina}/
-    defaults: { _controller: OfertaBundle:Sitio:estatica }
-
-portada:
-    pattern: /{ciudad}
-    defaults: { _controller: OfertaBundle:Default:portada, ciudad: null }
-
-_portada:
-    pattern: /
-    defaults: { _controller: OfertaBundle:Default:portada }
-
-oferta:
-    pattern: /{ciudad}/ofertas/{slug}
-    defaults: { _controller: OfertaBundle:Default:oferta }
-
-ciudad_cambiar:
-    pattern: /ciudad/cambiar-a-{ciudad}
-    defaults: { _controller: CiudadBundle:Default:cambiar }
-
-ciudad_recientes:
-    pattern: /{ciudad}/recientes
-    defaults: { _controller: CiudadBundle:Default:recientes }
-
-
-
 # Internal routing configuration to handle ESI
 #_internal:
 #   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
