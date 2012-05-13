@@ -2,7 +2,7 @@
 
 UsuarioBundle:
     resource: "@UsuarioBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /usuario
 
 TiendaBundle:
     resource: "@TiendaBundle/Resources/config/routing.yml"

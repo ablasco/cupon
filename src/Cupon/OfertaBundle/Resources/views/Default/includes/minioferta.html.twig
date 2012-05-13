@@ -1,6 +1,7 @@
-{% set expirada = oferta.fechaExpiracion | date('YmdHis') < 'now' | date('YmdHis') %}
 {% set ofertaUrl = path('oferta', { 'ciudad': oferta.ciudad.slug, 'slug': oferta.slug }) %}
 {% set tiendaUrl = path('tienda_portada', {'ciudad': oferta.ciudad.slug, 'tienda': oferta.tienda.slug}) %}
+{% set expirada = oferta.fechaExpiracion | date('YmdHis') < 'now' | date('YmdHis') %}
+{% set comprada = comprada | default(false) %}
 
 <section class="oferta mini">
     <div class="descripcion">
@@ -8,21 +9,20 @@
 
         {{ oferta.descripcion | mostrar_como_lista }}
 
-        {% if not expirada %}
+        {% if not expirada and not comprada %}
         <a class="boton" href="#">Comprar</a>
         {% endif %}
 
-        <div class="estado {{ expirada ? 'expirada' : '' }}">
-            {% if not expirada %}
+        <div class="estado {{ expirada ? 'expirada' : '' }} {{ comprada ? 'comprada' : '' }}">
+            {% if comprada %}
+                Comprada el {{ fechaCompra | date('d/m/Y') }}
+            {% elseif not expirada %}
             <!-- <div class="tiempo"> -->
-            <div id="tiempo">
+            <div id="tiempo" class="tiempo">
                 <strong>Faltan</strong>: {{ oferta.fechaExpiracion | cuenta_atras }}
             </div>
             {% else %}
-            Finalizada el {{ oferta.fechaExpiracion | date() }}
-            <div class="tiempo">
-                <strong>Finalizada</strong> el {{ oferta.fechaExpiracion | date() }}
-            </div>
+                Finalizada el {{ oferta.fechaExpiracion | date('d/m/Y') }}
             {% endif %}
         </div>
     </div>
