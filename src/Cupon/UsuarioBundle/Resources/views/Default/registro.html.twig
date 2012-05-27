@@ -1,0 +1,58 @@
+{% extends '::frontend.html.twig' %}
+
+{% block id 'usuario' %}
+{% block title %}Regístrate gratis como usuario{% endblock %}
+
+{% block article %}
+<h1>{{ block('title') }}</h1>
+
+<form action="{{ path('usuario_registro') }}" method="post" {{form_enctype(formulario) }}>
+    {{ form_errors(formulario) }}
+
+    <fieldset>
+        <legend>Datos personales</legend>
+
+        {{ form_row(formulario.nombre) }}
+        {{ form_row(formulario.apellidos) }}
+        {{ form_row(formulario.fecha_nacimiento) }}
+        {{ form_row(formulario.dni) }}
+
+        <div>
+            <strong>{{ form_label(formulario.direccion, 'Dirección postal') }}</strong>
+            <div class="error">{{ form_errors(formulario.direccion) }}</div>
+            <span>
+                {{ form_widget(formulario.direccion, { 'attr': {
+                    'accesskey' : 'd',
+                    'tabindex'  : 5,
+                    'class'     : 'destacado',
+                    'cols'      : 25,
+                    'rows'      : 3
+                } }) }}
+            </span>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Datos de acceso</legend>
+
+        {{ form_row(formulario.email) }}
+        {{ form_row(formulario.password) }}
+    </fieldset>
+
+    <fieldset>
+        <legend>Datos económicos</legend>
+
+        {{ form_row(formulario.numero_tarjeta) }}
+        {{ form_row(formulario.ciudad) }}
+    </fieldset>
+
+    {{ form_row(formulario.permite_email) }}
+
+    {{ form_rest(formulario) }}
+
+    <input class="boton" type="submit" value="Registrarme" />
+</form>
+
+{% endblock %}
+
+{% block aside %}{% endblock %}

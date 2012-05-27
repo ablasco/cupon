@@ -1,8 +1,18 @@
 {% if is_granted('ROLE_USUARIO') %}
+
+    {% if app.session.hasFlash('info') %}
+        <p class="info">{{ app.session.getFlash('info') }}</p>
+    {% endif %}
+
     <p>Conectado como {{ app.user }}</p>
+
     <a href="#">Ver mi perfil</a>
     <a href="{{ path('usuario_logout') }}">Cerrar sesión</a>
+
 {% else %}
+
+    <a class="boton" href="{{ path('usuario_registro') }}">Regístrate</a>
+
     <h2>Accede a tu cuenta</h2>
 
     <form action="{{ path('usuario_login_check') }}" method="post">
@@ -18,4 +28,5 @@
 
         <input type="submit" value="Entrar" />
     </form>
+
 {% endif %}

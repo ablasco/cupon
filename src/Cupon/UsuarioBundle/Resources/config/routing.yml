@@ -2,6 +2,10 @@ usuario_compras:
     pattern:  /compras
     defaults: { _controller: UsuarioBundle:Default:compras }
 
+usuario_registro:
+    pattern: /registro
+    defaults: { _controller: UsuarioBundle:Default:registro }
+
 usuario_login:
     pattern: /login
     defaults: { _controller: UsuarioBundle:Default:login }

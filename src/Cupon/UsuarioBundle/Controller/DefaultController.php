@@ -4,6 +4,9 @@ namespace Cupon\UsuarioBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Cupon\UsuarioBundle\Entity\Usuario;
+use Cupon\UsuarioBundle\Form\Frontend\UsuarioType;
 
 class DefaultController extends Controller
 {
@@ -52,5 +55,56 @@ class DefaultController extends Controller
         return $this->render('UsuarioBundle:Default:compras.html.twig', array(
             'compras' => $compras
         ));
+    }
+
+    public function registroAction()
+    {
+        $peticion = $this->getRequest();
+
+        $usuario = new Usuario();
+        $usuario->setPermiteEmail(true);
+        $usuario->setFechaNacimiento(new \DateTime('today - 18 years'));
+
+        $formulario = $this->createForm(new UsuarioType(), $usuario);
+
+        if ($peticion->getMethod() == 'POST') {
+            $formulario->bindRequest($peticion);
+
+            if ($formulario->isValid()) {
+                $encoder = $this->get('security.encoder_factory')
+                                ->getEncoder($usuario);
+                $usuario->setSalt(md5(time()));
+                $passwordCodificado = $encoder->encodePassword(
+                    $usuario->getPassword(),
+                    $usuario->getSalt()
+                );
+                $usuario->setPassword($passwordCodificado);
+
+                $em = $this->getDoctrine()->getEntityManager();
+                $em->persist($usuario);
+                $em->flush();
+
+                $this->get('session')->setFlash('info',
+                    '¡Enhorabuena! Te has registrado correctamente en Cupon'
+                );
+
+                $token = new UsernamePasswordToken(
+                    $usuario,
+                    $usuario->getPassword(),
+                    'usuarios',
+                    $usuario->getRoles()
+                );
+                $this->container->get('security.context')->setToken($token);
+
+                return $this->redirect($this->generateUrl('portada', array(
+                    'ciudad' => $usuario->getCiudad()->getSlug()
+                )));
+            }
+        }
+
+        return $this->render(
+            'UsuarioBundle:Default:registro.html.twig',
+            array('formulario' => $formulario->createView())
+        );
     }
 }
