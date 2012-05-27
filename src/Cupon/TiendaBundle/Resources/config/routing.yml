@@ -1,3 +1,5 @@
 tienda_portada:
-    pattern: /{ciudad}/tiendas/{tienda}
-    defaults: { _controller: TiendaBundle:Default:portada }
+    pattern: /{ciudad}/tiendas/{tienda}.{_format}
+    defaults: { _controller: TiendaBundle:Default:portada, _format: html }
+    requirements:
+        _format: html|rss

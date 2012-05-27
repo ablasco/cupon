@@ -14,3 +14,11 @@ services:
         class: Cupon\OfertaBundle\Twig\Extension\CuponExtension
         tags:
             - { name: twig.extension }
+
+# Uncomment this to serve responses in PDF format.
+#    cupon.ofertabundle.listener.request:
+#        class: Cupon\OfertaBundle\Listener\RequestListener
+#        tags:
+#            - { name: kernel.event_listener, event: kernel.request }
+
+
