@@ -1,13 +1,14 @@
 security:
     firewalls:
         frontend:
+            # TODO: why route "usuario_login_check" throws an error?
             #pattern:    ^/
             anonymous:  ~
             switch_user: true
             form_login:
                 login_path: usuario_login
                 check_path: usuario_login_check
-                default_target_path: /usuario/compras
+                default_target_path: usuario_compras
                 always_use_default_target_path: true
             logout:
                 path: usuario_logout
@@ -16,9 +17,10 @@ security:
                 lifetime: 3600
 
     access_control:
-        - { path: ^/usuario/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/usuario/registro, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/usuario/*, roles: ROLE_USUARIO }
+        - { path: ^/(es|en)/usuario/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/(es|en)/usuario/registro, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/(es|en)/usuario/*, roles: ROLE_USUARIO }
+        #- { path: ^/[a-z]{2}/usuario/*, roles: ROLE_USUARIO }
 
     providers:
         todos:
