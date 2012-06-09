@@ -8,7 +8,7 @@
     {{ oferta.descripcion | mostrar_como_lista }}
 
     {% if not expirada %}
-    <a class="boton" href="#">Comprar</a>
+    <a class="boton" href="#">{{ "deal.inc.buy" | trans }}</a>
     {% endif %}
 </section>
 
@@ -19,7 +19,7 @@
         <span>{{ descuento(oferta.precio, oferta.descuento) }}</span>
     </p>
     <p>
-        <strong>Condiciones:</strong>
+        <strong>{{ "deal.inc.conditions" | trans }}</strong>
         {{ oferta.condiciones }}
     </p>
 </section>
@@ -28,45 +28,51 @@
     {% if not expirada %}
     <!-- <div class="tiempo"> -->
     <div id="tiempo">
-        <strong>Faltan</strong>: {{ oferta.fechaExpiracion | cuenta_atras }}
+        {% trans with { '%time%' : oferta.fechaExpiracion | cuenta_atras } %}
+        <strong>deal.inc.remaining-time</strong>: %time%
+        {% endtrans %}
     </div>
 
     <div class="compras">
-        <strong>Compras</strong>: {{ oferta.compras }}
+        <strong>{{ "deal.inc.purchases" | trans }}</strong>: {{ oferta.compras }}
     </div>
 
     <div class="faltan">
         {% set faltan = oferta.umbral - oferta.compras %}
         {% if faltan > 0 %}
-        Faltan <strong>{{ faltan }} compras</strong> <br/>
-        para activar la oferta
+            {% trans with { '%faltan%' : faltan } %}
+            deal.inc.remaining.purchases %faltan%
+            {% endtrans %}
         {% else %}
-        <strong>Oferta activada</strong> por superar las
-        <strong>{{ oferta.umbral }}</strong> compras necesarias
+            {% trans with { '%umbral%' : oferta.umbral } %}
+            deal.inc.remaining.completed %umbral%
+            {% endtrans %}
         {% endif %}
     </div>
     {% else %}
     <div class="tiempo">
-        <strong>Finalizada</strong> el {{ oferta.fechaExpiracion | date() }}
+        {% trans with { '%time%' : oferta.fechaExpiracion | date() } %}
+        deal.inc.expired %time%
+        {% endtrans %}
     </div>
 
     <div class="compras">
-        <strong>Compras</strong>: {{ oferta.compras }}
+        <strong>{{ "deal.inc.purchases" | trans }}</strong>: {{ oferta.compras }}
     </div>
     {% endif %}
 </section>
 
 <section class="direccion">
-    <h2>Disfruta de la oferta en</h2>
+    <h2>{{ "deal.inc.shop-address" | trans }}</h2>
     <p>
-        <a href="{{ tiendaUrl }}">{{ oferta.tienda.nombre }}</a>
+        <a href="{{ tiendaUrl }}">{{ oferta.tienda.nombre }}</a><br/>
         {# Mostrar la dirección de la tienda en varias líneas #}
         {{ oferta.tienda.direccion | nl2br }}
     </p>
 </section>
 
 <section class="tienda">
-    <h2>Sobre la tienda</h2>
+    <h2>{{ "deal.inc.shop-about" | trans }}</h2>
     {# Mostrar la descripción de la tienda en varias líneas cortas #}
     {{ oferta.tienda.descripcion | wordwrap(40) | nl2br }}
 </section>

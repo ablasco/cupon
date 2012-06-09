@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="es" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>deal.inc.buy</source>
+                <target>Comprar</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>deal.inc.conditions</source>
+                <target>Condiciones:</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source><![CDATA[<strong>deal.inc.remaining-time</strong>: %time%]]></source>
+                <target><![CDATA[<strong>Faltan:</strong> %time%]]></target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>deal.inc.purchases</source>
+                <target>Compras</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>deal.inc.remaining.completed %umbral%</source>
+                <target><![CDATA[<strong>Oferta activada</strong> por superar las <strong>%umbral%</strong> compras necesarias]]></target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>deal.inc.remaining.purchases %faltan%</source>
+                <target><![CDATA[Faltan <strong>%faltan% compras</strong><br/>para activar la oferta]]></target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>deal.inc.expired %time%</source>
+                <target><![CDATA[<strong>Finalizada</strong> el %time%]]></target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>deal.inc.purchased %time%</source>
+                <target>Comprada el %time%</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>deal.inc.shop-address</source>
+                <target>Disfruta de la oferta en</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>deal.inc.shop-about</source>
+                <target>Sobre la tienda</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>deal.daily.title</source>
+                <target>Cupon, cada día ofertas increíbles en tu ciudad con descuentos de hasta el 90%</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>deal.daily.about.title</source>
+                <target>Sobre nosotros</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>deal.daily.about.description</source>
+                <target>Lorem ipsum dolor sit amet ESPANOL...</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>deal.detail.title %deal%</source>
+                <target>Detalles de %deal%</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>deal.detail.other-cities</source>
+                <target>Ofertas en otras ciudades</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source></source>
+                <target></target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

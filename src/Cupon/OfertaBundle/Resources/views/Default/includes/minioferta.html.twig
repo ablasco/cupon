@@ -10,19 +10,25 @@
         {{ oferta.descripcion | mostrar_como_lista }}
 
         {% if not expirada and not comprada %}
-        <a class="boton" href="#">Comprar</a>
+        <a class="boton" href="#">{{ "deal.inc.buy" | trans }}</a>
         {% endif %}
 
         <div class="estado {{ expirada ? 'expirada' : '' }} {{ comprada ? 'comprada' : '' }}">
             {% if comprada %}
-                Comprada el {{ fechaCompra | date('d/m/Y') }}
+                {% trans with { '%time%' : fechaCompra | date('d/m/Y') } %}
+                deal.inc.purchased %time%
+                {% endtrans %}
             {% elseif not expirada %}
             <!-- <div class="tiempo"> -->
             <div id="tiempo" class="tiempo">
-                <strong>Faltan</strong>: {{ oferta.fechaExpiracion | cuenta_atras }}
+                {% trans with { '%time%' : oferta.fechaExpiracion | cuenta_atras } %}
+                <strong>deal.inc.remaining-time</strong>: %time%
+                {% endtrans %}
             </div>
             {% else %}
-                Finalizada el {{ oferta.fechaExpiracion | date('d/m/Y') }}
+                {% trans with { '%time%' : oferta.fechaExpiracion | date('d/m/Y') } %}
+                deal.inc.expired %time%
+                {% endtrans %}
             {% endif %}
         </div>
     </div>
@@ -34,7 +40,7 @@
             <span>{{ descuento(oferta.precio, oferta.descuento) }}</span>
         </p>
         <p>
-            Disfruta de esta oferta en
+            {{ "deal.inc.shop-address" | trans }}
             <a href="{{ tiendaUrl }}">{{ oferta.tienda.nombre}}</a>
         </p>
     </div>

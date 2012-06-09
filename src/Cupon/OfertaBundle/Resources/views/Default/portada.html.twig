@@ -1,7 +1,7 @@
 {% extends '::frontend.html.twig' %}
 
 {% block title %}
-Cupon, cada día ofertas increíbles en tu ciudad con descuentos de hasta el 90%
+{{ "deal.daily.title" | trans }}
 {% endblock %}
 
 {% block id 'portada' %}
@@ -14,7 +14,7 @@ Cupon, cada día ofertas increíbles en tu ciudad con descuentos de hasta el 90%
     ## FORMULARIO DE LOGIN ##
 
     <section id="nosotros">
-        <h2>Sobre nosotros</h2>
-        <p>Lorem ipsum dolor sit amet...</p>
+        <h2>{{ "deal.daily.about.title" | trans }}</h2>
+        <p>{{ "deal.daily.about.description" | trans }}</p>
     </section>
 {% endblock %}

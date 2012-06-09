@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="es" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>deal.inc.buy</source>
+                <target>Buy</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>deal.inc.conditions</source>
+                <target>Conditions:</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source><![CDATA[<strong>deal.inc.remaining-time</strong>: %time%]]></source>
+                <target><![CDATA[%time% <strong>left</strong>]]></target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>deal.inc.purchases</source>
+                <target>Purchases</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>deal.inc.remaining.completed %umbral%</source>
+                <target><![CDATA[<strong>Deal activated</strong> by surpassing the <strong>%umbral%</strong> purchases needed]]></target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>deal.inc.remaining.purchases %faltan%</source>
+                <target><![CDATA[Remaining <strong>%faltan% purchases</strong><br/>to activate the deal]]></target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>deal.inc.expired %time%</source>
+                <target><![CDATA[<strong>Expired</strong> at %time%]]></target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>deal.inc.purchased %time%</source>
+                <target>Purchased at %time%</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>deal.inc.shop-address</source>
+                <target>Enjoy the deal at</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>deal.inc.shop-about</source>
+                <target>About the shop</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>deal.daily.title</source>
+                <target>Cupon, every day incredible deals in your city with discounts up to 90%</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>deal.daily.about.title</source>
+                <target>About us</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>deal.daily.about.description</source>
+                <target>Lorem ipsum dolor sit amet ENGLISH...</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>deal.detail.title %deal%</source>
+                <target>Details of %deal%</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>deal.detail.other-cities</source>
+                <target>Deals in other cities</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source></source>
+                <target></target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

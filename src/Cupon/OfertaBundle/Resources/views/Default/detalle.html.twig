@@ -1,6 +1,9 @@
 {% extends '::frontend.html.twig' %}
 
-{% block title %}Detalles de {{ oferta.nombre }}{% endblock %}
+{% block title %}
+{{ "deal.detail.title %deal%" | trans({'%deal%': oferta.nombre}) }}
+{% endblock %}
+
 {% block id 'oferta' %}
 
 {% block article %}
@@ -11,7 +14,7 @@
     {{ parent() }}
 
     <section id="relacionadas">
-        <h2>Ofertas en otras ciudades</h2>
+        <h2>{{ "deal.detail.other-cities" | trans }}</h2>
         <ul>
             {% for oferta in relacionadas %}
             {% set ofertaUrl = path('oferta', {'ciudad': oferta.ciudad.slug, 'slug': oferta.slug}) %}

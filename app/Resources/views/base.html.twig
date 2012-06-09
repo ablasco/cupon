@@ -13,19 +13,26 @@
 
         <footer>
             &copy; {{ 'now' | date('Y') }} - Cupon
-            <a href="{{ path('pagina_estatica', { 'pagina': 'ayuda' }) }}">Ayuda</a>
-            <a href="{{ path('pagina_estatica', { 'pagina': 'contacto' }) }}">Contacto</a>
-            <a href="{{ path('pagina_estatica', { 'pagina': 'privacidad' }) }}">Privacidad</a>
-            <a href="{{ path('pagina_estatica', { 'pagina': 'sobre-nosotros' }) }}">Sobre nosotros</a>
+            <a href="{{ path('pagina_estatica', { 'pagina': 'ayuda' }) }}">
+                {{ "menu.help" | trans({}, 'menus') }}
+            </a>
+            <a href="{{ path('pagina_estatica', { 'pagina': 'contacto' }) }}">
+                {{ "menu.contact" | trans({}, 'menus') }}
+            </a>
+            <a href="{{ path('pagina_estatica', { 'pagina': 'privacidad' }) }}">
+                {{ "menu.privacy" | trans({}, 'menus') }}
+            </a>
+            <a href="{{ path('pagina_estatica', { 'pagina': 'sobre-nosotros' }) }}">
+                {% trans from 'menus' %}menu.about{% endtrans %}
+            </a>
 
             {% set locale = app.request.session.locale %}
-
             {% if locale == 'es' %}
-                <span>Español</span>
-                <a href="{{ path('portada', { '_locale': 'en' }) }}">English</a>
+                <span>{{ "lang.spanish" | trans({}, 'menus') }}</span>
+                <a href="{{ path('portada', { '_locale': 'en' }) }}">{{ "lang.english" | trans({}, 'menus') }}</a>
             {% elseif locale == 'en' %}
-                <a href="{{ path('portada', { '_locale': 'es' }) }}">Español</a>
-                <span>English</span>
+                <a href="{{ path('portada', { '_locale': 'es' }) }}">{{ "lang.spanish" | trans({}, 'menus') }}</a>
+                <span>{{ "lang.english" | trans({}, 'menus') }}</span>
             {% endif %}
         </footer>
 
